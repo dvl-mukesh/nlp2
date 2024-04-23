@@ -11,8 +11,8 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/gicao/nlp"
-	"github.com/gicao/nlp/stemmer"
+	nlp "github.com/dvl-mukesh/nlp2"
+	"github.com/dvl-mukesh/nlp2/stemmer"
 )
 
 var (

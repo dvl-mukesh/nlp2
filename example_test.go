@@ -3,7 +3,7 @@ package nlp_test
 import (
 	"fmt"
 
-	"github.com/gicao/nlp"
+	nlp "github.com/dvl-mukesh/nlp2"
 )
 
 func ExampleTokenize() {

@@ -1,16 +1,12 @@
-module github.com/353solutions/nlp
+module github.com/dvl-mukesh/nlp2
 
-go 1.19
+go 1.22.1
 
 require (
-	// Prod requirements
-	github.com/gorilla/mux v1.8.0
-
-	// Dev requirements
-	github.com/BurntSushi/toml v1.2.0
-	github.com/stretchr/testify v1.8.0
+	github.com/BurntSushi/toml v1.3.2
+	github.com/gorilla/mux v1.8.1
+	github.com/stretchr/testify v1.9.0
 )
-
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
