@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gorilla/mux"
+	// "github.com/gorilla/mux"
 
 	nlp "github.com/dvl-mukesh/nlp2"
 	"github.com/dvl-mukesh/nlp2/stemmer"
@@ -33,10 +33,10 @@ func main() {
 		http.HandleFunc("/health", healthHandler)
 		http.HandleFunc("/tokenize", tokenizeHandler)
 	*/
-	r := mux.NewRouter()
-	r.HandleFunc("/health", s.healthHandler).Methods(http.MethodGet)
-	r.HandleFunc("/tokenize", s.tokenizeHandler).Methods(http.MethodPost)
-	r.HandleFunc("/stem/{word}", s.stemHandler).Methods(http.MethodGet)
+	r := http.NewServeMux()
+	r.HandleFunc("GET /health", s.healthHandler)
+	r.HandleFunc("POST /tokenize", s.tokenizeHandler)
+	r.HandleFunc("GET /stem/{word}", s.stemHandler)
 	http.Handle("/", r)
 
 	// run server
@@ -55,8 +55,7 @@ type Server struct {
 }
 
 func (s *Server) stemHandler(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	word := vars["word"]
+	word := r.PathValue("word")
 	stem := stemmer.Stem(word)
 	fmt.Fprintln(w, stem)
 }
