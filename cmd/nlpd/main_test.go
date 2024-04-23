@@ -5,8 +5,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"github.com/stretchr/testify/require"
+	// "github.com/stretchr/testify/require"
 )
 
 func TestHealth(t *testing.T) {
@@ -18,5 +17,7 @@ func TestHealth(t *testing.T) {
 	s.healthHandler(w, r)
 
 	resp := w.Result()
-	require.Equal(t, http.StatusOK, resp.StatusCode)
+	if resp.StatusCode != http.StatusOK {
+		t.Fatalf("expected %d, actual %d", http.StatusOK, resp.StatusCode)
+	}
 }

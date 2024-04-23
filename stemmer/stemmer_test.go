@@ -3,8 +3,7 @@ package stemmer
 import (
 	"fmt"
 	"testing"
-
-	"github.com/stretchr/testify/require"
+	// "github.com/stretchr/testify/require"
 )
 
 var testCases = []struct {
@@ -22,7 +21,9 @@ func TestStem(t *testing.T) {
 		name := fmt.Sprintf("%s:%s", tc.word, tc.stem)
 		t.Run(name, func(t *testing.T) {
 			stem := Stem(tc.word)
-			require.Equal(t, tc.stem, stem)
+			if stem != tc.stem {
+				t.Fatalf("extected %s, actual %s", tc.stem, stem)
+			}
 		})
 	}
 }
